@@ -1,0 +1,55 @@
+[project]
+name = "marimo-workspace"
+version = "0.1.0"
+description = "Interactive marimo applications, tutorials, and agentic workflows"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "marimo>=0.11.0",
+    "pandas>=2.2.0",
+    "plotly>=5.20.0",
+    "pillow>=10.0.0",
+    "uvicorn>=0.30.0",
+    "fastapi>=0.110.0",
+    "python-dotenv>=1.0.0",
+    "httpx>=0.27.0",
+    "altair>=6.3.0",
+]
+
+[project.optional-dependencies]
+# AI and LLM Agentic workflows
+ai = [
+    "openai>=1.40.0",
+    "google-genai>=0.1.0",
+    "anthropic>=0.30.0",
+]
+
+# Static documentation with MkDocs & WASM marimo embeds
+docs = [
+    "mkdocs>=1.6.0",
+    "mkdocs-material>=9.5.0",
+    "mkdocs-marimo>=0.1.0",
+]
+
+# Development, testing, and linting
+dev = [
+    "pytest>=8.0.0",
+    "ruff>=0.5.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["."]
+
+[tool.uv]
+package = false
+
+[tool.ruff.lint]
+extend-ignore = ["B018"]
